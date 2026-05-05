@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://cwrvcdqqyixxc"]
+
+[ext_resource type="Script" uid="uid://byea25ql17lqm" path="res://tentacule.gd" id="1_k85sy"]
+[ext_resource type="Texture2D" uid="uid://c22awfauye5mn" path="res://Tentacule_Sprite.png" id="2_k85sy"]
+
+[sub_resource type="Animation" id="Animation_k85sy"]
+resource_name = "Entree"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(120, 320, 215, 200), Rect2(470, 270, 200, 250), Rect2(770, 220, 270, 300), Rect2(1150, 100, 275, 440), Rect2(1500, 55, 270, 480), Rect2(1850, 60, 280, 470)]
+}
+
+[sub_resource type="Animation" id="Animation_wcyyu"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(735, 560, 250, 435), Rect2(1060, 550, 275, 450), Rect2(1435, 550, 220, 450), Rect2(1750, 540, 260, 460)]
+}
+
+[sub_resource type="Animation" id="Animation_ano6s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(120, 320, 215, 200)]
+}
+
+[sub_resource type="Animation" id="Animation_qeoqy"]
+resource_name = "Sortie"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(80, 1010, 275, 420), Rect2(390, 1010, 270, 390), Rect2(700, 1010, 290, 370), Rect2(700, 1010, 325, 400), Rect2(1030, 1010, 350, 390), Rect2(1370, 1010, 325, 400), Rect2(1730, 1100, 300, 310), Rect2(2060, 1150, 250, 260), Rect2(2310, 1190, 345, 230)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcyyu"]
+_data = {
+&"Entree": SubResource("Animation_k85sy"),
+&"Idle": SubResource("Animation_wcyyu"),
+&"RESET": SubResource("Animation_ano6s"),
+&"Sortie": SubResource("Animation_qeoqy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ano6s"]
+
+[node name="Tentacule" type="Area2D" unique_id=863659176]
+script = ExtResource("1_k85sy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1553052546]
+position = Vector2(20.756657, 59.761356)
+scale = Vector2(1.0942068, 0.9862186)
+texture = ExtResource("2_k85sy")
+region_enabled = true
+region_rect = Rect2(120, 320, 215, 200)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1590891404]
+libraries/ = SubResource("AnimationLibrary_wcyyu")
+speed_scale = 0.8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=363605063]
+visible = false
+polygon = PackedVector2Array(121, -102, 93, -102, 46, -131, -8, -126, -42, -93, -54, -59, -53, 10, 3, 112, -5, 184, -24, 129, -37, 147, -31, 189, -52, 175, -49, 224, -49, 299, 106, 301, 104, 140, 28, -6, 11, -70, 23, -95, 52, -96, 83, -78, 109, -79)
+
+[node name="ZoneScore" type="Area2D" parent="." unique_id=643293261]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneScore" unique_id=2054566795]
+position = Vector2(94, 1)
+scale = Vector2(1, 50)
+shape = SubResource("RectangleShape2D_ano6s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ZoneScore" to="." method="_on_zone_score_body_entered"]

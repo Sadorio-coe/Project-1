@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cmilmkn73rxh6"]
+
+[ext_resource type="Script" uid="uid://cl1lhlfra1rd8" path="res://naborim.gd" id="1_e0ukf"]
+[ext_resource type="Texture2D" uid="uid://y11f0piaba3p" path="res://SPRITE.png" id="2_47oq5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_apmfa"]
+radius = 26.019224
+
+[node name="Naborim" type="CharacterBody2D" unique_id=355407119]
+position = Vector2(0, 100)
+script = ExtResource("1_e0ukf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1091561070]
+scale = Vector2(2, 2)
+texture = ExtResource("2_47oq5")
+region_enabled = true
+region_rect = Rect2(25, 214, 55, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=380883564]
+shape = SubResource("CircleShape2D_apmfa")

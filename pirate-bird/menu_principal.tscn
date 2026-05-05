@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://da0lnb6dd28e4"]
+
+[ext_resource type="Texture2D" uid="uid://bao5wgfy0gwj" path="res://fond_jeu.png" id="1_bj1uy"]
+[ext_resource type="Script" uid="uid://cqvkq36bb3s61" path="res://menu_principal.gd" id="1_gmcsc"]
+
+[node name="MenuPrincipal" type="Control" unique_id=1238314279]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gmcsc")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=47157969]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bj1uy")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1420187073]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.0
+offset_top = -119.5
+offset_right = 214.0
+offset_bottom = 119.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Titre" type="Label" parent="VBoxContainer" unique_id=1751690291]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "PIRATE BIRD"
+horizontal_alignment = 1
+
+[node name="BoutonJouer" type="Button" parent="VBoxContainer" unique_id=1302482316]
+layout_mode = 2
+text = "JOUER"
+
+[node name="BoutonParametres" type="Button" parent="VBoxContainer" unique_id=283219956]
+layout_mode = 2
+text = "PARAMETRES"
+
+[node name="BoutonScores" type="Button" parent="VBoxContainer" unique_id=2018756453]
+layout_mode = 2
+text = "SCORES"
+
+[node name="BoutonQuitter" type="Button" parent="VBoxContainer" unique_id=1827062942]
+layout_mode = 2
+text = "QUITTER"
+
+[node name="PopupScores" type="Panel" parent="." unique_id=1620121448]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -250.0
+offset_right = 400.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PopupScores" unique_id=1936532027]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ListeScores" type="VBoxContainer" parent="PopupScores/ScrollContainer" unique_id=123092757]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BoutonRetour" type="Button" parent="PopupScores" unique_id=1156892090]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "X"
+
+[connection signal="pressed" from="VBoxContainer/BoutonJouer" to="." method="_on_bouton_jouer_pressed"]
+[connection signal="pressed" from="VBoxContainer/BoutonParametres" to="." method="_on_bouton_parametres_pressed"]
+[connection signal="pressed" from="VBoxContainer/BoutonScores" to="." method="_on_bouton_score_pressed"]
+[connection signal="pressed" from="VBoxContainer/BoutonScores" to="." method="_on_bouton_scores_pressed"]
+[connection signal="pressed" from="VBoxContainer/BoutonQuitter" to="." method="_on_bouton_quitter_pressed"]
+[connection signal="pressed" from="PopupScores/BoutonRetour" to="." method="_on_bouton_retour_pressed"]
