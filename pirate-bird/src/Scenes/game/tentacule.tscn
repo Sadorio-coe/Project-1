@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cwrvcdqqyixxc"]
 
-[ext_resource type="Script" uid="uid://byea25ql17lqm" path="res://tentacule.gd" id="1_k85sy"]
-[ext_resource type="Texture2D" uid="uid://c22awfauye5mn" path="res://Tentacule_Sprite.png" id="2_k85sy"]
+[ext_resource type="Script" uid="uid://byea25ql17lqm" path="res://src/scripts/game/tentacule.gd" id="1_b4n4w"]
+[ext_resource type="Texture2D" uid="uid://c22awfauye5mn" path="res://assets/Sprites/Tentacule_Sprite.png" id="2_g661v"]
 
 [sub_resource type="Animation" id="Animation_k85sy"]
 resource_name = "Entree"
@@ -78,12 +78,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ano6s"]
 
 [node name="Tentacule" type="Area2D" unique_id=863659176]
-script = ExtResource("1_k85sy")
+script = ExtResource("1_b4n4w")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1553052546]
 position = Vector2(20.756657, 59.761356)
 scale = Vector2(1.0942068, 0.9862186)
-texture = ExtResource("2_k85sy")
+texture = ExtResource("2_g661v")
 region_enabled = true
 region_rect = Rect2(120, 320, 215, 200)
 

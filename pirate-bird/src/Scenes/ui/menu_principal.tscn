@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://da0lnb6dd28e4"]
 
-[ext_resource type="Texture2D" uid="uid://bao5wgfy0gwj" path="res://fond_jeu.png" id="1_bj1uy"]
-[ext_resource type="Script" uid="uid://cqvkq36bb3s61" path="res://menu_principal.gd" id="1_gmcsc"]
+[ext_resource type="Script" uid="uid://cqvkq36bb3s61" path="res://src/scripts/ui/menu_principal.gd" id="1_ggiay"]
+[ext_resource type="Texture2D" uid="uid://bao5wgfy0gwj" path="res://assets/Sprites/fond_jeu.png" id="2_ds472"]
 
 [node name="MenuPrincipal" type="Control" unique_id=1238314279]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_gmcsc")
+script = ExtResource("1_ggiay")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=47157969]
 layout_mode = 1
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_bj1uy")
+texture = ExtResource("2_ds472")
 expand_mode = 1
 stretch_mode = 6
 metadata/_edit_use_anchors_ = true

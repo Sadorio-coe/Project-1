@@ -13,7 +13,7 @@ config_version=5
 config/name="Pirate Bird"
 run/main_scene="uid://da0lnb6dd28e4"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/Icons/icon.svg"
 
 [display]
 

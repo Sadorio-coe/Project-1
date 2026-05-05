@@ -1,6 +1,6 @@
 extends Node2D
 
-var tentacule_scene = preload("res://tentacule.tscn")
+var tentacule_scene = preload("res://src/Scenes/game/tentacule.tscn")
 
 # --- PARAMÈTRES DE DIFFICULTÉ ---
 var vitesse_fond = 200 # Remis à une valeur raisonnable pour tester

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c0plmvgjb37vr"]
 
-[ext_resource type="Script" uid="uid://b0nbikoagf4r6" path="res://le_monde.gd" id="1_rn0h4"]
-[ext_resource type="PackedScene" uid="uid://cmilmkn73rxh6" path="res://naborim.tscn" id="1_yoagr"]
-[ext_resource type="Texture2D" uid="uid://bao5wgfy0gwj" path="res://fond_jeu.png" id="2_uv8l1"]
+[ext_resource type="Script" uid="uid://b0nbikoagf4r6" path="res://src/scripts/game/le_monde.gd" id="1_47oix"]
+[ext_resource type="Texture2D" uid="uid://bao5wgfy0gwj" path="res://assets/Sprites/fond_jeu.png" id="2_qnvpy"]
+[ext_resource type="PackedScene" uid="uid://cmilmkn73rxh6" path="res://src/Scenes/game/naborim.tscn" id="3_4x8xw"]
 
 [node name="Le Monde" type="Node2D" unique_id=1398821653]
-script = ExtResource("1_rn0h4")
+script = ExtResource("1_47oix")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1537436682]
 process_mode = 3
@@ -15,10 +15,10 @@ motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground" unique_id=1438227286]
 scale = Vector2(1.3378907, 1.3)
-texture = ExtResource("2_uv8l1")
+texture = ExtResource("2_qnvpy")
 centered = false
 
-[node name="Naborim" parent="." unique_id=355407119 instance=ExtResource("1_yoagr")]
+[node name="Naborim" parent="." unique_id=355407119 instance=ExtResource("3_4x8xw")]
 position = Vector2(300, 333)
 up_direction = Vector2(0, 1)
 
