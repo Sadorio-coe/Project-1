@@ -4,9 +4,13 @@ extends Node2D
 enum Biome { OCEAN, PLAGE, GROTTE }
 var biome_actuel = Biome.OCEAN
 
+# Chargement des scènes d'obstacles
+var tentacule_scene = preload("res://src/Scenes/game/tentacule.tscn")
+var mouette_scene = preload("res://src/Scenes/game/obs_mouette_v1.tscn")
+
 # Listes (Pools) des obstacles disponibles par biome
-var obstacles_ocean = [ preload("res://src/Scenes/game/tentacule.tscn") ]
-var obstacles_plage = [ preload("res://src/Scenes/game/tentacule.tscn") ]
+@onready var obstacles_ocean = [ tentacule_scene ]
+@onready var obstacles_plage = [ tentacule_scene, mouette_scene ]
 
 # Dictionnaire des textures de fond par biome
 var fonds_biomes = {
@@ -30,7 +34,7 @@ var liste_scores = []
 var chemin_sauvegarde = "user://historique_pirate.save"
 
 func _ready():
-	charger_scores() # Cette fonction est maintenant bien définie ci-dessous
+	charger_scores()
 	get_tree().paused = false
 	changer_biome(Biome.OCEAN)
 	print("Jeu prêt - Naborim est en position.")
@@ -49,7 +53,7 @@ func _process(delta):
 func _on_timer_timeout():
 	if not jeu_en_cours: return
 	
-	# Sélection de l'obstacle selon le biome
+	# Sélection du pool selon le biome
 	var pool_actuel = obstacles_ocean
 	if biome_actuel == Biome.PLAGE:
 		pool_actuel = obstacles_plage
@@ -58,11 +62,12 @@ func _on_timer_timeout():
 	var nouvel_obstacle = scene_choisie.instantiate()
 	
 	var taille_ecran = get_viewport_rect().size
-	nouvel_obstacle.position.x = taille_ecran.x - 50
+	nouvel_obstacle.position.x = taille_ecran.x + 100 # Apparaît juste hors écran
 	
-	var zone_basse_min = taille_ecran.y - 300
-	var zone_basse_max = taille_ecran.y - 100 
-	nouvel_obstacle.position.y = randf_range(zone_basse_min, zone_basse_max)
+	# Hauteur aléatoire (fonctionne pour les tentacules et les mouettes)
+	var zone_min = 100 
+	var zone_max = taille_ecran.y - 100
+	nouvel_obstacle.position.y = randf_range(zone_min, zone_max)
 	
 	nouvel_obstacle.vitesse = vitesse_obstacles
 	add_child(nouvel_obstacle)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6i4sxd0xptv4"
-path="res://.godot/imported/Sprite_Naborim.png-bdb816d249f02803d56f7d9b390637cb.ctex"
+uid="uid://d4l02hdo3apuh"
+path="res://.godot/imported/Mouette.png-30fe22dfa62a872a6451fd493f427e80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Sprite_Naborim.png"
-dest_files=["res://.godot/imported/Sprite_Naborim.png-bdb816d249f02803d56f7d9b390637cb.ctex"]
+source_file="res://assets/Sprites/Mouette.png"
+dest_files=["res://.godot/imported/Mouette.png-30fe22dfa62a872a6451fd493f427e80.ctex"]
 
 [params]
 

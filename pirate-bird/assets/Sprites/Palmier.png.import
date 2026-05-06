@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6i4sxd0xptv4"
-path="res://.godot/imported/Sprite_Naborim.png-bdb816d249f02803d56f7d9b390637cb.ctex"
+uid="uid://bwfr3mp20p2bg"
+path="res://.godot/imported/Palmier.png-186b9c7dddf7e87e62a6a004c5702656.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Sprite_Naborim.png"
-dest_files=["res://.godot/imported/Sprite_Naborim.png-bdb816d249f02803d56f7d9b390637cb.ctex"]
+source_file="res://assets/Sprites/Palmier.png"
+dest_files=["res://.godot/imported/Palmier.png-186b9c7dddf7e87e62a6a004c5702656.ctex"]
 
 [params]
 
