@@ -1,9 +1,10 @@
 extends Node2D
 
+# Le chemin est déjà correct ici pour la nouvelle structure
 var tentacule_scene = preload("res://src/Scenes/game/tentacule.tscn")
 
 # --- PARAMÈTRES DE DIFFICULTÉ ---
-var vitesse_fond = 200 # Remis à une valeur raisonnable pour tester
+var vitesse_fond = 200 
 var vitesse_tentacules = 250
 var vitesse_max_tentacules = 850
 var temps_apparition_min = 0.7
@@ -26,20 +27,15 @@ func _process(delta):
 	if jeu_en_cours:
 		temps_ecoule += delta 
 		
-		# Mise à jour du HUD
 		if has_node("HUD/TimeLabel"):
 			$HUD/TimeLabel.text = "Temps : " + str(int(temps_ecoule)) + "s"
 		
-		# --- TESTS DE MOUVEMENT DU FOND ---
-		# Test 1 : ParallaxBackground (Normal)
 		if has_node("ParallaxBackground"):
 			$ParallaxBackground.scroll_base_offset.x -= vitesse_fond * delta
 		
-		# Test 2 : ParallaxLayer (Direct)
 		if has_node("ParallaxBackground/ParallaxLayer"):
 			$ParallaxBackground/ParallaxLayer.motion_offset.x -= vitesse_fond * delta
 			
-		# Test 3 : Sprite (Forcé) - Si ça bouge, l'image va glisser vers la gauche
 		if has_node("ParallaxBackground/ParallaxLayer/Sprite2D"):
 			$ParallaxBackground/ParallaxLayer/Sprite2D.position.x -= vitesse_fond * delta
 
@@ -69,8 +65,6 @@ func ajouter_point():
 	
 	if has_node("Timer") and $Timer.wait_time > temps_apparition_min:
 		$Timer.wait_time -= 0.02
-
-# --- LES FONCTIONS QUI MANQUAIENT ---
 
 func sauvegarder_nouveau_score(nouveau_score):
 	liste_scores.append(nouveau_score)
@@ -114,4 +108,5 @@ func _on_bouton_rejouer_pressed():
 
 func _on_bouton_menu_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://menu_principal.tscn")
+	# MODIFICATION : Chemin mis à jour vers le dossier UI
+	get_tree().change_scene_to_file("res://src/Scenes/ui/menu_principal.tscn")

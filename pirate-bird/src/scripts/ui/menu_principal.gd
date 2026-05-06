@@ -1,7 +1,8 @@
 extends Control
 
-# Chemin vers la scène de jeu et la sauvegarde
-var scene_jeu = "res://le_monde.tscn"
+# Chemin vers la scène de jeu (Utilisation de l'UID pour plus de sécurité)
+# L'UID de le_monde.tscn est : uid://c0plmvgjb37vr
+var scene_jeu = "uid://c0plmvgjb37vr" 
 var chemin_sauvegarde = "user://historique_pirate.save"
 
 func _ready():
@@ -16,6 +17,7 @@ func _ready():
 
 # --- FONCTION JOUER ---
 func _on_bouton_jouer_pressed():
+	# Utilise la variable scene_jeu qui contient maintenant l'UID
 	get_tree().change_scene_to_file(scene_jeu)
 
 # --- FONCTION PARAMETRES ---
@@ -39,7 +41,7 @@ func _on_bouton_retour_pressed():
 	if has_node("PopupScores"):
 		$PopupScores.visible = false
 
-# --- LOGIQUE D'AFFICHAGE (Avec Tests Print) ---
+# --- LOGIQUE D'AFFICHAGE ---
 func actualiser_la_liste_scores():
 	print("3. Début de l'actualisation de la liste...")
 	
@@ -51,7 +53,7 @@ func actualiser_la_liste_scores():
 	
 	print("4. Conteneur de liste trouvé avec succès.")
 
-	# Nettoyage
+	# Nettoyage des anciens labels
 	for enfant in conteneur.get_children():
 		enfant.queue_free()
 	
@@ -64,22 +66,23 @@ func actualiser_la_liste_scores():
 			fichier.close()
 			print("5. Fichier de sauvegarde trouvé. Nombre de scores : ", scores.size())
 	else:
-		print("5. Aucun fichier de sauvegarde trouvé à l'emplacement : ", chemin_sauvegarde)
+		print("5. Aucun fichier de sauvegarde trouvé.")
 	
-	# Création des labels
+	# Création des labels pour le Top 50
 	var rang = 1
 	for s in scores:
 		var label = Label.new()
 		label.text = str(rang) + ".   " + str(s) + " points"
 		
+		# Petit bonus visuel pour le podium
 		if rang == 1: label.modulate = Color.GOLD
 		elif rang == 2: label.modulate = Color.SILVER
-		elif rang == 3: label.modulate = Color(0.8, 0.5, 0.2)
+		elif rang == 3: label.modulate = Color(0.8, 0.5, 0.2) # Bronze
 		
 		conteneur.add_child(label)
 		rang += 1
 	
-	print("6. Fin de la création des labels. Affichage terminé.")
+	print("6. Affichage des scores terminé.")
 
 # --- FONCTION QUITTER ---
 func _on_bouton_quitter_pressed():
