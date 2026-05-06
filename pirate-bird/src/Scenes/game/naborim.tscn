@@ -3,18 +3,108 @@
 [ext_resource type="Script" uid="uid://cl1lhlfra1rd8" path="res://src/scripts/game/naborim.gd" id="1_e0ukf"]
 [ext_resource type="Texture2D" uid="uid://c6i4sxd0xptv4" path="res://assets/Sprites/Sprite_Naborim.png" id="2_oudyg"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_oudyg"]
+atlas = ExtResource("2_oudyg")
+region = Rect2(448, 265, 224, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugmp8"]
+atlas = ExtResource("2_oudyg")
+region = Rect2(672, 265, 224, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cylr"]
+atlas = ExtResource("2_oudyg")
+region = Rect2(672, 530, 224, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2lhl"]
+atlas = ExtResource("2_oudyg")
+region = Rect2(0, 795, 224, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86mve"]
+atlas = ExtResource("2_oudyg")
+region = Rect2(0, 0, 224, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_642gm"]
+atlas = ExtResource("2_oudyg")
+region = Rect2(224, 0, 224, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh0yb"]
+atlas = ExtResource("2_oudyg")
+region = Rect2(448, 0, 224, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbhob"]
+atlas = ExtResource("2_oudyg")
+region = Rect2(672, 0, 224, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4h46"]
+atlas = ExtResource("2_oudyg")
+region = Rect2(0, 265, 224, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1rld"]
+atlas = ExtResource("2_oudyg")
+region = Rect2(224, 265, 224, 265)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2cylr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oudyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugmp8")
+}],
+"loop": true,
+"name": &"chute",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cylr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2lhl")
+}],
+"loop": false,
+"name": &"mort",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86mve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_642gm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh0yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbhob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4h46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1rld")
+}],
+"loop": true,
+"name": &"vol",
+"speed": 8.5
+}]
+
 [node name="Naborim" type="CharacterBody2D" unique_id=355407119]
 position = Vector2(0, 100)
 script = ExtResource("1_e0ukf")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1091561070]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=671712229]
 position = Vector2(75, -17)
 scale = Vector2(0.6727273, 0.664)
-texture = ExtResource("2_oudyg")
-region_enabled = true
-region_rect = Rect2(2.5, 3, 220, 250)
+sprite_frames = SubResource("SpriteFrames_2cylr")
+animation = &"mort"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1928048129]
+visible = false
 position = Vector2(69, 39.999996)
 scale = Vector2(0.28696272, 0.29464442)
 polygon = PackedVector2Array(188.65195, -233.83908, 159.0437, -242.59663, 144.2396, -265.9501, 144.2396, -292.22275, 153.12207, -350.6064, 138.31793, -327.25296, 132.3963, -347.68723, 120.55301, -312.65704, 105.74887, -330.17212, 105.74887, -289.30356, 90.94476, -312.65704, 96.866394, -274.70764, 79.10144, -286.3844, 82.06229, -260.11172, 73.17981, -263.0309, 70.218994, -242.59663, 52.45404, -204.64725, 43.571564, -207.56642, 28.76744, -242.59663, 11.002502, -271.78845, -3.8016205, -268.86926, -80.78306, -382.71744, -71.90059, -341.84888, -107.43047, -376.87906, -86.704704, -318.4954, -122.2346, -347.68723, -92.62635, -292.22275, -119.27377, -309.73785, -95.58717, -274.70764, -110.3913, -274.70764, -89.66553, -251.35419, -104.46965, -251.35419, -89.66553, -233.83908, -95.58717, -228.00072, -74.861404, -216.32397, -80.78306, -207.56642, -63.018112, -201.72806, -68.93976, -184.21297, -60.05728, -166.69786, -48.21399, -149.18275, -39.331512, -134.58685, -21.566574, -128.74847, -6.762451, -114.15256, 16.924149, -111.23337, -101.50883, -9.061951, -68.93976, -23.657867, -134.07788, 34.7258, -101.50883, 20.129883, -30.449036, -14.90033, 11.002502, -58.68808, 28.76744, -26.577057, 64.29733, -32.415405, 64.29733, -67.44562, 90.94476, -76.203156, 123.513824, -108.31418, 141.27878, -131.66766, 159.0437, -140.4252, 185.69113, -140.4252, 194.57361, -152.10194, 188.65195, -172.53622, 182.73032, -195.8897, 200.49524, -210.48561)
