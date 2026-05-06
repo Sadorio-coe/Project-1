@@ -92,7 +92,9 @@ libraries/ = SubResource("AnimationLibrary_wcyyu")
 speed_scale = 0.8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=363605063]
-polygon = PackedVector2Array(121, -102, 93, -102, 46, -131, -8, -126, -42, -93, -54, -59, -53, 10, 3, 112, -5, 184, -24, 129, -37, 147, -31, 189, -52, 175, -49, 224, -7, 240, 88, 237, 104, 140, 28, -6, 11, -70, 23, -95, 52, -96, 83, -78, 109, -79)
+position = Vector2(-1.8982086, 0)
+scale = Vector2(0.81785715, 1)
+polygon = PackedVector2Array(121, -102, 93, -102, 46, -131, -8, -126, -42, -93, -54, -59, -39.2511, 7, 3, 112, -5, 184, -24, 129, -37, 147, -31, 189, -52, 175, -49, 224, -7, 240, 88, 237, 104, 140, 28, -6, 11, -70, 23, -95, 52, -96, 83, -78, 109, -79)
 
 [node name="ZoneScore" type="Area2D" parent="." unique_id=643293261]
 visible = false

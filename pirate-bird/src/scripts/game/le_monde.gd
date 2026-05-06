@@ -15,12 +15,12 @@ var mouette_scene = preload("res://src/Scenes/game/obs_mouette_v1.tscn")
 # Dictionnaire des textures de fond par biome
 var fonds_biomes = {
 	Biome.OCEAN: preload("res://assets/Sprites/fond_jeu.png"),
-	Biome.PLAGE: preload("res://assets/Sprites/fond_jeu.png") # À remplacer par ton image de plage plus tard
+	Biome.PLAGE: preload("res://assets/Sprites/fond_jeu.png")
 }
 
 # --- PARAMÈTRES DE DIFFICULTÉ ---
 var vitesse_fond = 200 
-var vitesse_obstacles = 250
+var vitesse_obstacles = 200 
 var vitesse_max_obstacles = 850
 var temps_apparition_min = 0.7
 
@@ -37,7 +37,12 @@ func _ready():
 	charger_scores()
 	get_tree().paused = false
 	changer_biome(Biome.OCEAN)
-	print("Jeu prêt - Naborim est en position.")
+	
+	if has_node("Timer"):
+		$Timer.wait_time = 2.0
+		$Timer.start()
+		
+	print("Jeu prêt - Difficulté initiale : Vitesse 200, Intervalle 2.0s")
 
 func _process(delta):
 	if jeu_en_cours:
@@ -45,6 +50,7 @@ func _process(delta):
 		if has_node("HUD/TimeLabel"):
 			$HUD/TimeLabel.text = "Temps : " + str(int(temps_ecoule)) + "s"
 		
+		# Parallaxe du fond
 		if has_node("ParallaxBackground"):
 			$ParallaxBackground.scroll_base_offset.x -= vitesse_fond * delta
 		if has_node("ParallaxBackground/ParallaxLayer"):
@@ -61,14 +67,20 @@ func _on_timer_timeout():
 	var scene_choisie = pool_actuel[randi() % pool_actuel.size()]
 	var nouvel_obstacle = scene_choisie.instantiate()
 	
+	# Positionnement horizontal initial (hors écran)
 	var taille_ecran = get_viewport_rect().size
-	nouvel_obstacle.position.x = taille_ecran.x + 100 # Apparaît juste hors écran
+	nouvel_obstacle.position.x = taille_ecran.x + 150 
 	
-	# Hauteur aléatoire (fonctionne pour les tentacules et les mouettes)
-	var zone_min = 100 
-	var zone_max = taille_ecran.y - 100
-	nouvel_obstacle.position.y = randf_range(zone_min, zone_max)
+	# --- SPÉCIALISATION DES HAUTEURS (Y) PAR TYPE ---
+	if scene_choisie == tentacule_scene:
+		nouvel_obstacle.position.y = taille_ecran.y - 200
+	elif scene_choisie == mouette_scene:
+		nouvel_obstacle.position.y = randf_range(50, 200)
+	else:
+		# Fallback pour les futurs obstacles non classés
+		nouvel_obstacle.position.y = randf_range(200, taille_ecran.y - 200)
 	
+	# Transmission de la vitesse (Alignement corrigé ici !)
 	nouvel_obstacle.vitesse = vitesse_obstacles
 	add_child(nouvel_obstacle)
 
@@ -81,10 +93,12 @@ func ajouter_point():
 	if score == 10 and biome_actuel != Biome.PLAGE:
 		changer_biome(Biome.PLAGE)
 	
+	# Progression de la difficulté
 	if vitesse_obstacles < vitesse_max_obstacles:
 		vitesse_obstacles += 4 
 		vitesse_fond += 2 
 	
+	# Accélération de l'apparition
 	if has_node("Timer") and $Timer.wait_time > temps_apparition_min:
 		$Timer.wait_time -= 0.02
 

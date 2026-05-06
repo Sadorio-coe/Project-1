@@ -5,17 +5,15 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fh2p"]
 
-[node name="ObsMouetteV1" type="Node2D" unique_id=1736323101]
-
-[node name="Mouette" type="Area2D" parent="." unique_id=1631358562]
+[node name="ObsMouetteV1" type="Area2D" unique_id=804329804]
 script = ExtResource("1_1fh2p")
 
-[node name="Sprite2D" type="Sprite2D" parent="Mouette" unique_id=973573205]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=973573205]
 texture = ExtResource("2_g4ec7")
 region_enabled = true
 region_rect = Rect2(0, 0, 250, 200)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mouette/Sprite2D" unique_id=1851498735]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1851498735]
 polygon = PackedVector2Array(82, -56, 85, -81, 61, -60, 77, -97, 30, -49, 13, -37, 6, -26, -4, 5, -20, -54, -49, -90, -49, -57, -54, -43, -57, -15, -70, -13, -87, 7, -79, 18, -79, 25, -80, 31, -101, 34, -101, 46, -94, 47, -75, 48, -64, 61, -58, 74, -40, 84, -25, 85, -9, 85, 11, 83, 25, 99, 45, 100, 59, 98, 41, 69, 64, 71, 79, 62, 83, 50, 22, 48, 48, 12, 59, -7, 59, -16, 70, -24, 74, -34)
 
 [node name="ZoneScore" type="Area2D" parent="." unique_id=1904180382]
